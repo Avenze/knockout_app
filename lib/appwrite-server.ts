@@ -12,7 +12,7 @@ interface ServerAppwriteConfig {
 }
 
 function requireEnv(name: string): string {
-  const value = process.env[name];
+  const value = process.env[name]?.trim();
 
   if (!value) {
     throw new Error(`Missing environment variable: ${name}`);
@@ -22,7 +22,7 @@ function requireEnv(name: string): string {
 }
 
 function getOptionalEnv(name: string): string | undefined {
-  const value = process.env[name];
+  const value = process.env[name]?.trim();
 
   if (!value) {
     return undefined;
